@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <script src="js/about.js"></script>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Metodo Pago</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<ventas.length; i++) { %>
+                    <tr>
+                        <td><%= ventas[i].nombreCliente %></td>
+                        <td><%= ventas[i].metodoPagoSeleccionado %></td>
+                        <td><%= ventas[i].total %></td>
+                        <td><button class="btn btn-success btn-sm" onclick="detalleVenta(<%=ventas[i].numeroCarrito %>)" data-bs-toggle="modal" data-bs-target="#modalDetalleVenta">Detalle</button></td>
+                    </tr>
+                <% } %>
+            </tbody>
+
+        </table>
+       
+        
+    </div>
+</div>
+<!-- Modal detalle venta-->
+<div class="modal fade" id="modalDetalleVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody id="detalleVentaBody">
+                    
+                </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+<!-- Incluye jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Incluye Popper.js -->
+<script src="/js/popper.min.js"></script>
+<!-- Incluye el archivo JavaScript de Bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

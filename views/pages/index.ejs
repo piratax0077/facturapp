@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../partials/head'); %>
+    
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+        <main>
+         
+          <h1>Bienvenido a la mejor demo para Facturación electrónica</h1>
+         
+          <p>Autor: Francisco Rojo Gallardo</p>
+          <div style="border: 1px solid black; min-height: 300px; background-color: #eee;">
+
+          </div>
+        </main>
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalBuscarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Buscar Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body scrollable-div" style="height: 400px;overflow-y: scroll;">
+              <div class="form-group mb-3">
+                <label for="" class="form-label">Buscador</label>
+                <input type="search" name="nombre" id="busqueda-productos" class="form-control">
+              </div>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Código interno</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="lista-productos">
+                  <% productos.forEach(function(producto) { %>
+                    <tr>
+                      <td><%=producto.codigo_interno %></td>
+                      <td><%= producto.nombre %></td>
+                      <td>$<%= producto.precio %></td>
+                      <td><input type="number" class="form-control" id="cantidad-<%=producto.codigo_interno %>" ></td>
+                      <td>
+                        <button class="btn btn-success btn-sm" onclick="seleccionarProducto(<%= JSON.stringify(producto) %>)">Seleccionar</button>
+                      </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+              </table>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="modalAgregarProductoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/agregar-producto" method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalAgregarProductoLabel">Agregar Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <div class="form-group">
+                  <label for="" class="form-label">Nombre</label>
+                  <input type="text" name="nombre" id="nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="" class="form-label">Precio</label>
+                  <input type="number" step="0.01" id="precio" name="precio" class="form-control" required>
+                </div>             
+                <div class="form-group">
+                  <label for="" class="form-label">Cantidad</label>
+                  <input type="number" step="1" id="cantidad" name="cantidad" class="form-control" required>
+                </div>   
+                <div class="form-group">
+                  <label for="" class="form-label">Descripción</label>
+                  <textarea id="descripcion" name="descripcion" rows="4" class="form-control" required></textarea>
+                </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-sm btn-danger" role="button" data-bs-dismiss="modal">Cerrar</button>
+              <button class="btn btn-sm btn-success" role="button">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalBuscarCliente" tabindex="-1" aria-labelledby="modalBuscarClienteLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalBuscarClienteLabel">Buscar Cliente</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="" class="form-label">Buscador</label>
+              <input type="search" name="busqueda-clientes" id="busqueda-clientes" class="form-control">
+            </div>
+            <ul id="lista-clientes"></ul>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-sm btn-danger" role="button" data-bs-dismiss="modal">Cerrar</button>
+              <button class="btn btn-sm btn-success" role="button">Buscar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalVerProducto" tabindex="-1" aria-labelledby="modalVerProductoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalVerProductoLabel">Producto</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalBodyProducto">
+            
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-sm btn-danger" role="button" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Incluye jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluye Popper.js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- Incluye el archivo JavaScript de Bootstrap -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+        <script src="js/clientes.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+        <main>
+            <div class="botonera mt-2">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalBusquedaCliente">Buscar Cliente</button>
+                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente">Agregar Cliente</button>
+            </div>
+            
+        </main>
+        <div class="d-flex justify-content-between">
+            <div >
+                <h3>Información del cliente</h3>
+                <table class="table">
+                    
+                    <tbody id="info-cliente">
+                        <tr>
+                            <td>Nombre:</td>
+                            <td id="nombre-cliente"></td>
+                        </tr>
+                        <tr>
+                            <td>Telefono:</td>
+                            <td id="telefono-cliente"></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td id="email-cliente"></td>
+                               
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div >
+                <h3>Estado de cuenta</h3>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalBusquedaCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body scrollable-div" style="height: 400px;overflow-y: scroll;">
+                <div class="form-group mb-3">
+                  <label for="" class="form-label">Buscador</label>
+                  <input type="search" name="nombre" id="busqueda-clientes" class="form-control">
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lista-clientes">
+                    <% clientes.forEach(function(cliente,index) { %>
+                      <tr>
+                        <td><%=cliente.nombre %></td>
+                        <td><%= cliente.telefono %></td>
+                        <td><%= cliente.email %></td>
+                        
+                        <td>
+                          <button class="btn btn-success btn-sm" onclick="seleccionarCliente(<%=JSON.stringify(cliente) %>)">Seleccionar</button>
+                        </td>
+                      </tr>
+                  <% }); %>
+                  </tbody>
+                </table>
+                
+              </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+      <!-- Incluye jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Incluye Popper.js -->
+      <script src="/js/popper.min.js"></script>
+      <!-- Incluye el archivo JavaScript de Bootstrap -->
+      <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

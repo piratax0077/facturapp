@@ -12,6 +12,14 @@ header{
     
 }
 
+nav i{
+    font-size: 40px;
+}
+
+header .container{
+    background-color: blanchedalmond;
+}
+
 .carritoCompras, .info{
     border: 1px solid black;
     margin-bottom: 10px;

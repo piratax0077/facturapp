@@ -267,6 +267,10 @@ app.get('/facturar', (req, res) => {
       total: total});
 });
 
+app.get('/usuarios', (req, res) => {
+  res.render('pages/usuarios');
+});
+
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');
 });

@@ -31,27 +31,32 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Cliente</th>
-                    <th>Metodo Pago</th>
+                    <th>Forma</th>
+                    <% usuarios.forEach(usuario => { %>
+                        <th><%=usuario.nombre %></th>
+                    <% }); %>
                     <th>Total</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
+                <% formasPago.forEach(forma => { %>
+                    <tr>
+                        <td><%=forma.nombreFormaPago %></td>
+                    </tr>
+                <% }); %>
                 <% if(ventas.length > 0) { %>
                 <% for(var i=0; i<ventas.length; i++) { %>
                     <tr>
-                        <td><%= ventas[i].nombreCliente %></td>
-                        <td><%= ventas[i].metodoPagoSeleccionado %></td>
                         <td><%= ventas[i].total %></td>
-                        <td><button class="btn btn-success btn-sm" onclick="detalleVenta(<%=ventas[i].numeroCarrito %>)" data-bs-toggle="modal" data-bs-target="#modalDetalleVenta">Detalle</button></td>
                     </tr>
                 <% } %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="4">No hay ventas registradas</td>
-                    </tr>
                 <% } %>
+                <tr >
+                    <td>Total</td>
+                    <td colspan="5"></td>
+                    <td>125233</td>
+                </tr>
             </tbody>
 
         </table>
@@ -82,6 +87,57 @@
     <div class="col-4">
         
         <img src="https://support.content.office.net/es-es/media/5f8252c4-09fd-40a1-ae03-1d498f9dedfd.png" alt="" class="w-100">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h1>Boletas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Forma</th>
+                    <% usuarios.forEach(usuario => { %>
+                        <th><%=usuario.nombre %></th>
+                    <% }); %>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% formasPago.forEach(forma => { %>
+                    <tr>
+                        <td><%=forma.nombreFormaPago %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <img src="https://www.forcemanager.com/wp-content/uploads/blog_Como_hacer_un_reporte_de_ventas6.png" alt="" srcset="" class="w-100">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h1>Facturas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Forma</th>
+                    <% usuarios.forEach(usuario => { %>
+                        <th><%=usuario.nombre %></th>
+                    <% }); %>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% formasPago.forEach(forma => { %>
+                    <tr>
+                        <td><%=forma.nombreFormaPago %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="row">

@@ -42,6 +42,14 @@ var usuarios = [
   {nombre: 'Daniela', email:'daniela@gmail.com', urlimage:"https://smoda.elpais.com/wp-content/uploads/2021/10/sen10-620x470.jpg"}
 ];
 
+var formasPago = [
+  {idFormaPago:1, nombreFormaPago: 'Efectivo'},
+  {idFormaPago:2, nombreFormaPago: 'Tarjeta de crédito'},
+  {idFormaPago:3, nombreFormaPago: 'Tarjeta de débito'},
+  {idFormaPago:4, nombreFormaPago: 'Transferencia bancaria'},
+  {idFormaPago:5, nombreFormaPago: 'Cheque'},
+];
+
 var nombreCliente = "Sin Cliente";
 // fecha actual en formato dd/mm/yyyy
 const fecha = new Date();
@@ -88,9 +96,8 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   // retornar la vista about.ejs
-  // renderizar la vista pages/about.ejs y pasarle el arreglo de ventas
-  console.log(fechaActual);
-  res.render('pages/about',{ventas: ventas, fechaActual: fechaActual});
+  // renderizar la vista pages/about.ejs y pasarle el arreglo de ventas, la fecha actual, el arreglo de usuarios y el arreglo de formas de pago
+  res.render('pages/about',{ventas: ventas, fechaActual: fechaActual, usuarios: usuarios, formasPago: formasPago});
 });
 
 app.post('/agregar-producto', (req, res) => {

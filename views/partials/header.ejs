@@ -10,8 +10,14 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a href="/facturar" aria-current="page" class="nav-link">Ventas</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ventas
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                <li><a href="/facturar" class="dropdown-item">Ventas (bol-fac)</a> </li>
+                <li><a href="#" class="dropdown-item">Nota de crédito</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInventario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,8 +34,8 @@
                 Reportes
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/about">Ventas diarias</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="/about">Ventas Diarias</a></li>
+                <li><a class="dropdown-item" href="#">Ventas Mensuales</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>

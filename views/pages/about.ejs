@@ -43,17 +43,16 @@
                 <% formasPago.forEach(forma => { %>
                     <tr>
                         <td><%=forma.nombreFormaPago %></td>
+                        <% ventas.forEach(venta => { %>
+                            <% if(venta.metodoPagoSeleccionado == forma.nombreFormaPago){ %>
+                                <td><%=venta.total %></td>
+                            <% } %>
+                        <% }); %>
                     </tr>
                 <% }); %>
-                <% if(ventas.length > 0) { %>
-                <% for(var i=0; i<ventas.length; i++) { %>
-                    <tr>
-                        <td><%= ventas[i].total %></td>
-                    </tr>
-                <% } %>
-                <% } %>
-                <tr >
-                    <td>Total</td>
+                
+                <tr class="table-warning">
+                    <td style="font-weight: bold;">Total</td>
                     <td colspan="5"></td>
                     <td>125233</td>
                 </tr>
@@ -80,7 +79,11 @@
                 </tr>
             </thead>
             <tbody>
-
+                <tr class="table-warning">
+                    <td style="font-weight: bold;">Total</td>
+                    <td colspan="5"></td>
+                    <td>125233</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -109,6 +112,11 @@
                         <td><%=forma.nombreFormaPago %></td>
                     </tr>
                 <% }); %>
+                <tr class="table-warning">
+                    <td style="font-weight: bold;">Total</td>
+                    <td colspan="5"></td>
+                    <td>125233</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -136,6 +144,11 @@
                         <td><%=forma.nombreFormaPago %></td>
                     </tr>
                 <% }); %>
+                <tr class="table-warning">
+                    <td style="font-weight: bold;">Total</td>
+                    <td colspan="5"></td>
+                    <td>125233</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -153,7 +166,11 @@
                 </tr>
             </thead>
             <tbody>
-
+                <tr class="table-warning">
+                    <td style="font-weight: bold;">Total</td>
+                    <td colspan="5"></td>
+                    <td>125233</td>
+                </tr>
             </tbody>
         </table>
     </div>

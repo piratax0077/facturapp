@@ -44,10 +44,9 @@ var usuarios = [
 
 var formasPago = [
   {idFormaPago:1, nombreFormaPago: 'Efectivo'},
-  {idFormaPago:2, nombreFormaPago: 'Tarjeta de crédito'},
-  {idFormaPago:3, nombreFormaPago: 'Tarjeta de débito'},
-  {idFormaPago:4, nombreFormaPago: 'Transferencia bancaria'},
-  {idFormaPago:5, nombreFormaPago: 'Cheque'},
+  {idFormaPago:2, nombreFormaPago: 'Transferencia'},
+  {idFormaPago:3, nombreFormaPago: 'Credito'},
+  {idFormaPago:4, nombreFormaPago: 'Cheque'},
 ];
 
 var nombreCliente = "Sin Cliente";
@@ -97,6 +96,7 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   // retornar la vista about.ejs
   // renderizar la vista pages/about.ejs y pasarle el arreglo de ventas, la fecha actual, el arreglo de usuarios y el arreglo de formas de pago
+  console.log(ventas);
   res.render('pages/about',{ventas: ventas, fechaActual: fechaActual, usuarios: usuarios, formasPago: formasPago});
 });
 

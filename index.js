@@ -81,7 +81,8 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   // retornar la vista about.ejs
   // renderizar la vista pages/about.ejs y pasarle el arreglo de ventas
-  res.render('pages/about',{ventas: ventas});
+  console.log(fechaActual);
+  res.render('pages/about',{ventas: ventas, fechaActual: fechaActual});
 });
 
 app.post('/agregar-producto', (req, res) => {

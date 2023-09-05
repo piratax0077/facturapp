@@ -15,6 +15,7 @@ function detalleVenta(numeroCarrito){
 
             // imprimir los productos en la tabla
             let html = '';
+            if(productos.length > 0){
             productos.forEach(producto => {
                 let total = producto.cantidad * producto.precio;
                 html += `
@@ -27,6 +28,14 @@ function detalleVenta(numeroCarrito){
                     </tr>
                 `;
             });
+        }else{
+            html += `
+                    <tr>
+                        <td colspan="4">No hay productos en el carrito</td>
+                    </tr>
+                `;
+        }
+
             document.getElementById('detalleVentaBody').innerHTML = html;
         }else{
 
@@ -37,3 +46,6 @@ function detalleVenta(numeroCarrito){
     }
     );
 }
+
+
+    

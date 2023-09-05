@@ -11,7 +11,20 @@
 </header>
 
 <main>
+<div class="container">
+    <div class="row bg-light border py-2">
+        <div class="col-md-4">
+            <input type="date" name="" id="" class="form-control" value="<%=fechaActual %>">
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-success btn-sm">Buscar</button>
+        </div>
+        <div class="col-md-4">
 
+        </div>
+    </div>
+    
+</div>
 <div class="row">
     <div class="col-8">
         <h1>Reporte de ventas</h1>
@@ -25,12 +38,18 @@
                 </tr>
             </thead>
             <tbody>
+                <% if(ventas.length > 0) { %>
                 <% for(var i=0; i<ventas.length; i++) { %>
                     <tr>
                         <td><%= ventas[i].nombreCliente %></td>
                         <td><%= ventas[i].metodoPagoSeleccionado %></td>
                         <td><%= ventas[i].total %></td>
                         <td><button class="btn btn-success btn-sm" onclick="detalleVenta(<%=ventas[i].numeroCarrito %>)" data-bs-toggle="modal" data-bs-target="#modalDetalleVenta">Detalle</button></td>
+                    </tr>
+                <% } %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No hay ventas registradas</td>
                     </tr>
                 <% } %>
             </tbody>
@@ -52,7 +71,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Información Venta</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

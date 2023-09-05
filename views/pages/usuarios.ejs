@@ -18,21 +18,21 @@
                 <div class="col-md-4">
                     <h3>Listado de Usuarios</h3>
                     <ul>
-                        <li><img src="https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png" alt=""> Francisco</li>
-                        <li><img src="https://pbs.twimg.com/profile_images/1627693548064632834/uoIslBmc_400x400.jpg" alt=""> Carlos</li>
-                        <li><img src="https://i.pinimg.com/originals/8b/88/02/8b88025dbeb2fece9ba7bb08515c5449.png" alt=""> Maria José</li>
-                        <li><img src="https://static1.personality-database.com/profile_images/809fe209adce43e1ad9973e58772828e.png" alt=""> Mauricio</li>
-                        <li><img src="https://smoda.elpais.com/wp-content/uploads/2021/10/sen10-620x470.jpg" alt=""> Daniela</li>
+                        <% usuarios.forEach((usuario,index) => { %>
+                            <li><a href="javascript:void(0)" class="text-decoration-none" onclick="seleccionarUsuario(<%=index %>, <%=JSON.stringify(usuarios) %>)"><img src="<%=usuario.urlimage %>" alt=""> <%=usuario.nombre %> </a></li>    
+                        <% }); %>
+                        
+                        
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h3>Información del usuario</h3>
                     <div class="card" style="width: 100%;">
-                        <img src="https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png" class="card-img-top" alt="...">
+                        <img id="image_user" src="https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Francisco</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <h5 class="card-title" id="nombre">Francisco</h5>
+                          <p class="card-text" id="email">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-warning btn-sm">Cambiar Rol</a>
                         </div>
                       </div>
                 </div>

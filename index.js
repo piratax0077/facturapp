@@ -34,6 +34,14 @@ var clientes = [
   {nombre: 'Maria Perez', email:'maria@gmail.com', telefono: '1234567890'},
 ];
 
+var usuarios = [
+  {nombre: 'Francisco', email: 'francisco@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png"},
+  {nombre: 'Mauricio', email:'mauricio@gmail.com', urlimage:"https://pbs.twimg.com/profile_images/1627693548064632834/uoIslBmc_400x400.jpg"},
+  {nombre: 'Maria José', email:'mariajose@gmail.com', urlimage:"https://i.pinimg.com/originals/8b/88/02/8b88025dbeb2fece9ba7bb08515c5449.png"},
+  {nombre: 'Carlos', email:'carlos@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/809fe209adce43e1ad9973e58772828e.png"},
+  {nombre: 'Daniela', email:'daniela@gmail.com', urlimage:"https://smoda.elpais.com/wp-content/uploads/2021/10/sen10-620x470.jpg"}
+];
+
 var nombreCliente = "Sin Cliente";
 // fecha actual en formato dd/mm/yyyy
 const fecha = new Date();
@@ -268,7 +276,7 @@ app.get('/facturar', (req, res) => {
 });
 
 app.get('/usuarios', (req, res) => {
-  res.render('pages/usuarios');
+  res.render('pages/usuarios', { usuarios: usuarios});
 });
 
 app.listen(3000, () => {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <script src="js/marcas-vehiculos.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+        <main>
+            <div class="d-flex border p-2 justify-content-between">
+                <div class="form-group">
+                    <label class="form-label" for="">Nombre Marca</label>
+                    <input type="text" class="form-control" placeholder="Nombre de la marca">
+                </div>
+                <div class="form-group">
+                    <label for="" class="form-label">Subir imagen</label>
+                    <input type="file" name="" id="" class="form-control">
+                </div>
+                
+                <button class="btn btn-success btn-sm" onclick="paciencia()">Agregar</button>
+            </div>
+            <div class="row" id="marcas">
+
+            </div>
+        </main>
+        <footer>
+            <%- include('../partials/footer'); %>
+        </footer>
+        <!-- Incluye jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Incluye Popper.js -->
+        <script src="/js/popper.min.js"></script>
+        <!-- Incluye el archivo JavaScript de Bootstrap -->
+        <script src="/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>

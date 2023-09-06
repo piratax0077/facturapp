@@ -286,6 +286,11 @@ app.get('/usuarios', (req, res) => {
   res.render('pages/usuarios', { usuarios: usuarios});
 });
 
+app.get('/marcas-vehiculos', (req, res) => {
+  
+  res.render('pages/marcas-vehiculos');
+});
+
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');
 });

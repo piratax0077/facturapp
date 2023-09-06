@@ -120,6 +120,7 @@ app.post('/agregar-producto', (req, res) => {
 
 app.post('/agregar-carrito',(req,res) => {
   try {
+    console.log(req.body);
     // recuperar el producto del body
     const { producto } = req.body;
     

@@ -58,6 +58,7 @@ function buscarRepuesto(){
         repuestos.forEach(repuesto => {
             // formatear el precio de cada repuesto
             let precio = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(repuesto.precio_venta);
+          
             html += `
                 <tr>
                     <td><a href="javascript:void(0)" onclick="verImagen('`+repuesto.urlfoto+`')"><img src="https://panchoserver.ddns.net/storage/${repuesto.urlfoto}" alt="" class="img-fluid"> </a> </td>
@@ -66,7 +67,7 @@ function buscarRepuesto(){
                     <td>${repuesto.stock_actual}</td>
                     <td>${precio}</td>
                     <td>
-                        <button class="btn btn-success btn-sm" onclick="paciencia()">Agregar </button>
+                        <button class="btn btn-success btn-sm" onclick="agregar('`+repuesto.id+`','`+repuesto.descripcion+`','1','`+repuesto.precio_venta+`')">Agregar </button>
                         <button class="btn btn-warning btn-sm" onclick="paciencia()">Detalle </button>
                         <button class="btn btn-danger btn-sm" onclick="paciencia()">CB </button>
                     </td>
@@ -79,6 +80,45 @@ function buscarRepuesto(){
         `;
 
         document.getElementById('resultado').innerHTML = html;
+    });
+}
+
+function agregar(codigo_interno, descripcion, cantidad,precio){
+
+    // preparar repuesto como reqbody
+    let repuesto = {
+        codigo_interno: codigo_interno,
+        nombre: descripcion,
+        precio: precio,
+        cantidad: '1',
+        subtotal: 2000
+    };
+
+    var producto = repuesto;
+
+    fetch('/agregar-carrito', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({producto}),
+    }).then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error al agregar el producto al carrito');
+        }
+    }).then(data => {
+      
+        if (data.success) {
+            // Actualizar la vista con el nuevo arreglo de productos
+            window.location.href = '/facturar';
+        } else {
+            console.error('Error al agregar el producto al carrito');
+        }
+    }).catch(error => {
+        console.error('Error al agregar el producto al carrito', error);
     });
 }
 

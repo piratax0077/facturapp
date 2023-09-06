@@ -62,3 +62,9 @@ h3{
     width: 100px;
     height: 100px;
 }
+
+/* Estilo personalizado para el div scrollable */
+.scrollable-div {
+    max-height: 500px;
+    overflow-y: scroll; /* Hace que el contenido sea scrollable en el eje Y */
+}

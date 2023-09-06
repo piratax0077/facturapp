@@ -21,20 +21,21 @@
 <div class="modal fade" id="modalBuscarRepuesto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Busqueda</h5>
+        <div class="modal-header bg-dark" style="color: white; ">
+          <h5 class="modal-title" id="exampleModalLabel">Buscar Repuesto</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="background-color: rgb(242, 245, 169);">
           <div class="d-flex">
-            <input type="search" name="busqueda" id="busqueda" class="form-control">
-            <button class="btn btn-primary btn-sm" onclick="buscarRepuesto()">Buscar</button>
+            <input type="search" name="busqueda" id="busqueda" class="form-control" placeholder="¿Qué desea buscar?">
+            <button class="btn btn-success btn-sm" onclick="buscarRepuesto()"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
-          <div class="row scrollable-div" id="resultado">
+          <div class="row scrollable-div mt-3" id="resultado">
 
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer bg-dark">
+          <p class="text-right text-white text-uppercase">Sysmafra 2023</p>
         </div>
       </div>
     </div>

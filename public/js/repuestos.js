@@ -10,7 +10,10 @@ function buscarRepuesto(){
     .then(data => {
         let repuestos = data[0];
         console.log(repuestos);
-        let html = '';
+        // mostrar la cantidad de repuestos en el array
+        let cantidadResultado = repuestos.length;
+
+        let html = '<p class="text-center">Mostrando '+cantidadResultado+' resultados. </p>';
         repuestos.forEach(repuesto => {
             html += `
                 <div class="col-md-3">

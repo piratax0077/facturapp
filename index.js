@@ -291,6 +291,10 @@ app.get('/marcas-vehiculos', (req, res) => {
   res.render('pages/marcas-vehiculos');
 });
 
+app.get('/repuestos', (req, res) => {
+  res.render('pages/repuestos');
+});
+
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');
 });

@@ -336,3 +336,13 @@ function verProducto(codigo_interno){
     }
     );
 }
+
+function paciencia(){
+    // mostrar mensaje de paciencia con swal
+    swal({
+        title: 'Paciencia',
+        text: 'Esta versión es solo una prueba, por lo que no se pueden agregar marcas de vehículos',
+        icon: 'info',
+        confirmButtonText: 'Ok'
+    });
+}

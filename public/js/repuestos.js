@@ -5,6 +5,14 @@ window.onload = function () {
 
 function buscarRepuesto(){
     let busqueda = document.getElementById('busqueda').value;
+    if(busqueda == ''){
+        return swal({
+            title: "Error",
+            text: "Debe ingresar un repuesto para buscar",
+            icon: "error",
+            button: "Aceptar"
+        });
+    }
     fetch("https://panchoserver.ddns.net/api/"+busqueda+"/buscadordemo")
     .then(res => res.json())
     .then(data => {

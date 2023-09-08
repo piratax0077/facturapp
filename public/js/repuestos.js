@@ -48,6 +48,7 @@ function buscarRepuesto(){
                         <th>Imagen </th>
                         <th>Descripcion</th>
                         <th>Marca</th>
+                        <th width="6%">Cantidad</th>
                         <th>Stock</th>
                         <th>Precio</th>
                         <th>Acciones</th>
@@ -64,10 +65,11 @@ function buscarRepuesto(){
                     <td><a href="javascript:void(0)" onclick="verImagen('`+repuesto.urlfoto+`')"><img src="https://panchoserver.ddns.net/storage/${repuesto.urlfoto}" alt="" class="img-fluid"> </a> </td>
                     <td>${repuesto.descripcion}</td>
                     <td>${repuesto.marcarepuesto}</td>
+                    <td><input type="number" id="cod-${repuesto.id}" class="form-control" /></td>
                     <td>${repuesto.stock_actual}</td>
                     <td>${precio}</td>
                     <td>
-                        <button class="btn btn-success btn-sm" onclick="agregar('`+repuesto.id+`','`+repuesto.descripcion+`','1','`+repuesto.precio_venta+`')">Agregar </button>
+                        <button class="btn btn-success btn-sm" onclick="agregar('`+repuesto.id+`','`+repuesto.descripcion+`','`+repuesto.precio_venta+`','`+repuesto.stock_actual+`')">Agregar </button>
                         <button class="btn btn-warning btn-sm" onclick="paciencia()">Detalle </button>
                         <button class="btn btn-danger btn-sm" onclick="paciencia()">CB </button>
                     </td>
@@ -83,15 +85,26 @@ function buscarRepuesto(){
     });
 }
 
-function agregar(codigo_interno, descripcion, cantidad,precio){
+function agregar(codigo_interno, descripcion,precio, stock_actual){
 
+    let cantidad_vendida = document.getElementById('cod-'+codigo_interno).value;
+    let subtotal_vendida = cantidad_vendida * precio;
+    // validar que la cantidad no sea mayor al total en stock
+    if(cantidad_vendida > stock_actual){
+        return swal({
+            title: "Error",
+            text: "La cantidad ingresada es mayor al stock disponible",
+            icon: "error",
+            button: "Aceptar"
+        });
+    }
     // preparar repuesto como reqbody
     let repuesto = {
         codigo_interno: codigo_interno,
         nombre: descripcion,
         precio: precio,
-        cantidad: '1',
-        subtotal: 2000
+        cantidad: cantidad_vendida,
+        subtotal: subtotal_vendida
     };
 
     var producto = repuesto;

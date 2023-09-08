@@ -303,7 +303,7 @@ function eliminarProductoCarro(index){
 
 function verProducto(codigo_interno){
     // ir a la ruta ver-producto
-    let url = '/verProducto/'+codigo_interno;
+    let url = 'https://panchoserver.ddns.net/api/'+codigo_interno+'/repuestodemo';
     fetch(url, {
         method: 'get'
     }).then(response => {
@@ -313,20 +313,66 @@ function verProducto(codigo_interno){
             throw new Error('Error al ver el producto lalal');
         }
     }).then(data => {
-       
-        if(data.success){
-            console.log(data.producto);
+        if(data){
+            console.log(data);
+            let repuesto = data[0];
+            let fotos = data[1];
             // Mostra la informacion del producto en el modal-body con id modalBodyProducto
 
-            // crear variable html que contenga un div con clase row y dentro de ese div un div con clase col-12 contenga la informacion del producto
-            let html = `<div class="row">
-            <div class="col-12">
-                <p>Código Interno: ${data.producto.codigo_interno}</p>
-                <p>Nombre: ${data.producto.nombre}</p>
-                <p>Precio: $${data.producto.precio}</p>
-                <p>Stock: ${data.producto.cantidad}</p>
-                
-            </div>`;
+            // crear un carrusel bootstrap con las fotos del producto y luego una tabla con la informacion del producto
+            let html = `
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">`;
+            for (let i = 0; i < fotos.length; i++) {
+                if(i == 0){
+                    html += `
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://panchoserver.ddns.net/storage/${fotos[i].urlfoto}" alt="First slide">
+                    </div>`;
+                }else{
+                    html += `
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://panchoserver.ddns.net/storage/${fotos[i].urlfoto}" alt="First slide">
+                    </div>`;
+                }
+            }
+            html += `
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row">Código interno</th>
+                        <td>${repuesto.codigo_interno}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Descripción</th>
+                        <td>${repuesto.descripcion}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Marca</th>
+                        <td>${repuesto.marcarepuesto}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Stock</th>
+                        <td>${repuesto.stock_actual}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Precio</th>
+                        <td>${repuesto.precio_venta}</td>
+                    </tr>
+                </tbody>
+            </table>
+            `;
+            
             document.getElementById('modalBodyProducto').innerHTML = html;
         }else{
             console.error('Error al ver el producto');

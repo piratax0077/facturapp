@@ -296,6 +296,10 @@ app.get('/repuestos', (req, res) => {
   res.render('pages/repuestos');
 });
 
+app.get('/notas_credito', (req, res) => {
+  res.render('pages/notas_credito');
+});
+
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');
 });

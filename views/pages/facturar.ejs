@@ -2,7 +2,6 @@
 <html>
 <head>
     <%- include('../partials/head'); %>
-    <script src="js/helpers.js"></script>
     
     <script src="js/main.js"></script>
     <script>
@@ -59,34 +58,10 @@
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalBuscarCliente">Buscar Cliente</button>
                 <button class="btn btn-danger btn-sm" onclick="limpiarCarrito()">Limpiar carrito</button>
               </div>
+              
               <div class="row">
                 <div class="col-md-4">
-                  <div id="indicadoresEconomicos" class="info">
-                    <h3>Indicadores económicos</h3>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Indicador</th>
-                          <th>Valor</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Dolar</td>
-                          <td>$<span id="dolar"></span></td>
-                        </tr>
-                        <tr>
-                          <td>Euro</td>
-                          <td>$<span id="euro"></span></td>
-                        </tr>
-                        <tr>
-                          <td>Tasa desempleo</td>
-                          <td><span id="tasaDesempleo"></span>%</td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
+                  
                   <div id="informacion" class="info">
                     <h3>Información</h3>
                     <div class="d-flex justify-content-around bg-light my-2">

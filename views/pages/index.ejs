@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head'); %>
     
-    
+    <script src="js/helpers.js"></script>
 </head>
 <body>
     <div class="container">
@@ -15,9 +15,78 @@
           <h1>Bienvenido a la mejor demo para Facturación electrónica</h1>
          
           <p>Creadores: Francisco Rojo Gallardo - Mauricio Eguren</p>
-          <div style="min-height: 500px; background-color: #eee; background-image: url('https://experienciaa.com/wp-content/uploads/2019/11/negocio-rentable-900x444-1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
-            <p style="line-height:400px; text-align: center;">HOLA MUNDO</p>
+          <div class="row">
+            <div class="col-md-8">
+              <div style="min-height: 500px; background-color: #eee; background-image: url('https://experienciaa.com/wp-content/uploads/2019/11/negocio-rentable-900x444-1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                <p style="line-height:400px; text-align: center;">HOLA MUNDO</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Agenda diaria</h5>
+                </div>
+                <div class="card-body">
+                  <div id="indicadoresEconomicos" style="font-size: 14px;">
+                    <h5>Indicadores económicos</h5>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Indicador</th>
+                          <th>Valor</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Dolar</td>
+                          <td>$<span id="dolar"></span></td>
+                        </tr>
+                        <tr>
+                          <td>Euro</td>
+                          <td>$<span id="euro"></span></td>
+                        </tr>
+                        <tr>
+                          <td>Tasa desempleo</td>
+                          <td><span id="tasaDesempleo"></span>%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h5>Pedidos terrestres</h5>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Fecha</th>
+                          <th>Cliente</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>01/01/2021</td>
+                          <td>Francisco Rojo</td>
+                          <td>En proceso</td>
+                        </tr>
+                        <tr>
+                          <td>01/01/2021</td>
+                          <td>Francisco Rojo</td>
+                          <td>En proceso</td>
+                        </tr>
+                        <tr>
+                          <td>01/01/2021</td>
+                          <td>Francisco Rojo</td>
+                          <td>En proceso</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  
+                </div>
+              </div>
+            </div>
           </div>
+          
         </main>
         <footer>
             <%- include('../partials/footer'); %>

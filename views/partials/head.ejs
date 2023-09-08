@@ -22,6 +22,29 @@
     }
 
     function verOfertas(){
-        console.log('ofertas');
+        fetch('https://panchoserver.ddns.net/api/dameofertas')
+        .then(response => response.json())
+        .then(data => {
+            let ofertas = data[0];
+            console.log(ofertas);
+            // imprimir las ofertas en formato card de bootstrap
+            let html = '<div class="row">';
+            ofertas.forEach(oferta => {
+                html+=`
+                <div class="col-md-3">
+                    <div class="card w-100" >
+                        <img src="http://panchoserver.ddns.net/storage/`+oferta.urlfoto+`" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">`+oferta.codigo_interno+`</h5>
+                            <p class="card-text">${oferta.descripcion}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            html+='</div>';
+            document.getElementById('ofertas').innerHTML = html;
+        });
     }
 </script>

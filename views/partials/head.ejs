@@ -30,6 +30,8 @@
             // imprimir las ofertas en formato card de bootstrap
             let html = '<div class="row">';
             ofertas.forEach(oferta => {
+                // usar separador de miles para el precio actualizado
+                let precio_actualizado = new Intl.NumberFormat('de-DE').format(oferta.precio_actualizado);
                 html+=`
                 <div class="col-md-3">
                     <div class="card w-100" >
@@ -37,7 +39,7 @@
                         <div class="card-body">
                             <h5 class="card-title">`+oferta.codigo_interno+`</h5>
                             <p class="card-text">${oferta.descripcion}</p>
-                            
+                            <p class="card-text">$ ${precio_actualizado}</p>   
                         </div>
                     </div>
                 </div>

@@ -22,14 +22,6 @@ window.onload = function(){
 }
 
 
-
-
-
-
-
-
-
-
 function paciencia(){
     // mostrar mensaje de paciencia con swal
     swal({

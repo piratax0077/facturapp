@@ -13,7 +13,7 @@ function buscarRepuesto(){
             button: "Aceptar"
         });
     }
-    fetch("https://panchoserver.ddns.net/api/"+busqueda+"/buscadordemo")
+    fetch("https://panchoserver.ddns.net/api/dameproveedoresdemo")
     .then(res => res.json())
     .then(data => {
         let repuestos = data[0];

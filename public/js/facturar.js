@@ -1,3 +1,22 @@
+window.onload = function(){
+    fetch('https://panchoserver.ddns.net/api/dameproveedoresdemo').
+    then(response => response.json()).
+    then(data => {
+        let proveedores = data;
+        console.log(proveedores);
+        let html = '';
+        for (let i = 0; i < proveedores.length; i++) {
+            html += `
+            <option value="${proveedores[i].id}">${proveedores[i].empresa_nombre_corto}</option>
+            `;
+        }
+        document.getElementById('selectProveedores').innerHTML = html;
+
+    }).
+    catch(error => console.error(error));
+};
+
+
 function verProducto(codigo_interno){
     // ir a la ruta ver-producto
     let url = 'https://panchoserver.ddns.net/api/'+codigo_interno+'/repuestodemo';
@@ -205,8 +224,11 @@ function procesar(){
     }
 
     // obtener el valor del total
-    const total = document.getElementById('total').textContent;
-    if(total == 0){
+    var totalString = document.getElementById('total').textContent;
+    var totalSinPunto = totalString.replace(/\./g,'');
+
+    // validar que el total no sea 0
+    if(totalSinPunto == 0){
         return swal({
             title: "Error!",
             text: "No hay productos en el carrito",
@@ -215,6 +237,8 @@ function procesar(){
           });
 
     }
+
+    let total = parseInt(totalSinPunto);
 
     // validar que la suma de los inputs sea igual al total
     if(checkEfectivo.checked){
@@ -357,4 +381,4 @@ function aplicarDescuento(option){
             });
     }
     
-    }
+}

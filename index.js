@@ -252,7 +252,7 @@ app.get('/detalle-venta/:numeroCarrito', (req, res) => {
   }
 });
 
-app.get('/productos', (req, res) => {
+app.get('/facturas', (req, res) => {
   var proveedores = [
     {idProveedor:1,nombreProveedor: 'Proveedor 1', direccion: 'Direccion 1', telefono: 'Telefono 1'},
     {idProveedor:2,nombreProveedor: 'Proveedor 2', direccion: 'Direccion 2', telefono: 'Telefono 2'},
@@ -299,6 +299,11 @@ app.get('/repuestos', (req, res) => {
 app.get('/notas_credito', (req, res) => {
   res.render('pages/notas_credito');
 });
+
+app.get('/productos', (req, res) => {
+  res.render('pages/productos');
+});
+
 
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');

@@ -2,6 +2,15 @@ window.onload = function(){
     dameinfo();
 };
 
+var clonando=false;
+var existe_factura="NO";
+var ampliar_aplicacionez=false;
+var cantidad_repuestos_factura=0;
+
+function ir_a_boton_guardaritem(){
+    document.getElementById("btnGuardarItem").focus();
+}
+
 function dameinfo()
 {
     fetch('https://panchoserver.ddns.net/api/dameproveedoresdemo').
@@ -447,7 +456,7 @@ function cargarModelosSimilares()
               },
               url:url,
               success:function(models){ //Viene en formato json
-                console.log(models);
+                
                 $('#ModeloSim option').remove();
                 var modelos=JSON.parse(models);
                 $('#ModeloSim').append('<option value="">Elija un modelo</option>');
@@ -475,4 +484,68 @@ function cargarModelosSimilares()
           $('#ModeloSim option').remove();
           $('#ModeloSim').append('<option value="">Elija una Marca</option>');
         }
-    }
+}
+
+function ubicarse_en_anios()
+    {
+      var modelito=document.getElementById("ModeloSim");
+      var texto=modelito.options[modelito.selectedIndex].text.trim();
+      $("#nombre_modelo").html("<b>Modelo: </b>"+texto);
+      var ini="(";
+      var fin=")";
+      var años=texto.substring(texto.indexOf(ini)+1,texto.indexOf(fin));
+      document.getElementById("anios_vehiculo_sim").value=años;
+      document.getElementById("anios_vehiculo_sim").focus();
+      document.getElementById("anios_vehiculo_sim").select();
+}
+
+function ampliar()
+{
+        if(ampliar_aplicacionez==false)
+        {
+
+            /* este
+
+
+
+                Cuando una propiedad contiene un guión, al acceder a ella con JavaScript se utiliza camel case:
+
+
+
+                se quita el guión y la siguiente letra se hace mayúscula.
+
+
+
+                Así, en CSS es z-index pero en JS es zIndex, igual ocurre con border-color (borderColor),
+
+
+
+                grid-column (gridColumn) o grid-row (gridRow).
+
+
+
+                FUENTE: https://es.stackoverflow.com/questions/340390/cambiar-el-valor-de-la-propiedad-grid-column-row-de-css-con-javascript
+
+
+
+            */
+
+
+
+            document.getElementById("zona_similares").style.gridColumn="2/5"; //este
+            document.getElementById("zona_OEMs").style.visibility="hidden";
+            document.getElementById("zona_FABs").style.visibility="hidden";
+
+            $("#ampliar").html("<<");
+
+        }else{
+
+            document.getElementById("zona_similares").style.gridColumn="2/3"; //este
+            document.getElementById("zona_OEMs").style.visibility="visible";
+            document.getElementById("zona_FABs").style.visibility="visible";
+
+            $("#ampliar").html(">>");
+        }
+
+        ampliar_aplicacionez=!ampliar_aplicacionez;
+}

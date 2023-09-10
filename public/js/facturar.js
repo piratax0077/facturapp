@@ -1,20 +1,63 @@
 window.onload = function(){
+    dameinfo();
+};
+
+function dameinfo()
+{
     fetch('https://panchoserver.ddns.net/api/dameproveedoresdemo').
     then(response => response.json()).
     then(data => {
-        let proveedores = data;
-        console.log(proveedores);
+        let proveedores = data[0];
+        let marcas = data[1];
+        let familias = data[2];
+        let marcasrepuestos= data[3];
+        let paises = data[4];
+        console.log(marcas);
         let html = '';
         for (let i = 0; i < proveedores.length; i++) {
             html += `
             <option value="${proveedores[i].id}">${proveedores[i].empresa_nombre_corto}</option>
             `;
         }
+        let html2 = '';
+        for (let i = 0; i < marcas.length; i++) {
+            html2 += `
+            <option value="${marcas[i].idmarcavehiculo}">${marcas[i].marcanombre}</option>
+            `;
+        }
+
+        let html3 = '';
+        for (let i = 0; i < familias.length; i++) {
+            html3 += `
+            <option value="${familias[i].id}">${familias[i].nombrefamilia}</option>
+            `;
+        }
+
+        let html4 = '';
+        for (let i = 0; i < marcasrepuestos.length; i++) {
+            html4 += `
+            <option value="${marcasrepuestos[i].id}">${marcasrepuestos[i].marcarepuesto}</option>
+            `;
+        }
+
+        let html5 = '';
+        for (let i = 0; i < paises.length; i++) {
+            html5 += `
+            <option value="${paises[i].id}">${paises[i].nombre_pais}</option>
+            `;
+        }
+
+
+        
         document.getElementById('selectProveedores').innerHTML = html;
+        document.getElementById('MarcaSim').innerHTML = html2;
+        document.getElementById('familia').innerHTML = html3;
+        document.getElementById('MarcaRepuesto').innerHTML = html4;
+        document.getElementById('Pais').innerHTML = html5;
 
     }).
     catch(error => console.error(error));
-};
+}
 
 
 function verProducto(codigo_interno){
@@ -382,3 +425,54 @@ function aplicarDescuento(option){
     }
     
 }
+
+
+function cargarModelosSimilares()
+    {
+        var idMarcaSim=document.getElementById("MarcaSim").value;
+
+        if(idMarcaSim!="")
+        {
+          document.getElementById("anios_vehiculo_sim").value="";
+            //var url='{{url("modelovehiculo/damepormarca")}}'+'/'+idMarcaSim;
+            // ir a la ruta ver-producto
+            var url = 'https://panchoserver.ddns.net/api/damepormarca_demo/'+idMarcaSim;
+            $.ajax({
+              type:'GET',
+              beforeSend: function () {
+                $("#aplicaciones_msje").html("Cargando Marcas de Vehículos...");
+                $("#nombre_modelo").html("<b>Modelo: </b>");
+                $('#ModeloSim option').remove();
+                $('#ModeloSim').append('<option value="">Buscando...</option>');
+              },
+              url:url,
+              success:function(models){ //Viene en formato json
+                console.log(models);
+                $('#ModeloSim option').remove();
+                var modelos=JSON.parse(models);
+                $('#ModeloSim').append('<option value="">Elija un modelo</option>');
+                modelos.forEach(function(modelo){
+                    if(modelo.zofri==1){
+                        $('#ModeloSim').append('<option value="'+modelo.id+'">ZOFRI - '+modelo.modelonombre+' \('+modelo.anios_vehiculo.trim()+'\)</option>');
+                    }else{
+                        $('#ModeloSim').append('<option value="'+modelo.id+'">'+modelo.modelonombre+' \('+modelo.anios_vehiculo.trim()+'\)</option>');
+                    }
+                });
+                document.getElementById("ModeloSim").selectedIndex=0;
+                $("#aplicaciones_msje").html("Listo...");
+              },
+              error: function(error){
+                $('#mensajes').html(error.responseText);
+                swal({
+                    title: 'ERROR',
+                    text: error.responseText,
+                    icon: 'error',
+                });
+              }
+
+            });
+        }else{
+          $('#ModeloSim option').remove();
+          $('#ModeloSim').append('<option value="">Elija una Marca</option>');
+        }
+    }

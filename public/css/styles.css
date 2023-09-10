@@ -22,7 +22,7 @@ ul img{
     border-radius: 100px;
 }
 
-header .container{
+header .container-fluid{
     background-color: blanchedalmond;
 }
 
@@ -68,3 +68,714 @@ td img{
     max-height: 500px;
     overflow-y: scroll; /* Hace que el contenido sea scrollable en el eje Y */
 }
+
+#MarcaSim{
+    height: 160px;
+}
+
+  .form-control-sm{
+  
+  
+  
+      padding:2px;
+  
+  
+  
+      font-size:12px;
+  
+  
+  
+      height: 24px;
+  
+  
+  
+  }
+  
+  .btn-sm{
+      padding: 1px 5px;
+      font-size:12px;
+      height: 24px;
+  }
+  
+   .enlinea{
+       display:flex;
+       flex-direction: row;
+       justify-content: start;
+       align-items:start;
+   }
+  
+  
+  /* ALINEACION HORIZONTAL DEL CHECKBOX Y SU LABEL, VER EN factu_produ.blade.php */
+  
+  input[type="checkbox"],
+  
+  label {
+  
+  
+  
+      float: left;
+  
+  
+  
+      line-height: 1.6em;
+  
+  
+  
+      height: 1.6em;
+  
+  
+  
+      margin: 0px 2px;
+  
+  
+  
+      padding: 0px;
+  
+  
+  
+      font-size: inherit;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .contenedor{
+      display:grid;
+      grid-template-columns: 24% 40% 18% 18%;
+      grid-template-rows: 50px 80px 240px 90px 400px;
+      height: 100%;
+      row-gap: 5px;
+      column-gap: 2px;
+      align-items: start;
+  }
+  
+  
+  .g-titulo{
+      grid-column: 1/5;
+      display: grid;
+      grid-template-columns: 80% 20%;
+      grid-template-rows: 2fr 1fr;
+  }
+  
+  
+  .g-cabecera{
+      grid-column: 1/5;
+      background-color: #D0FFFF;
+      display:grid;
+      grid-template-columns: repeat(6,1fr);
+      grid-template-rows: 1fr 2fr;
+      column-gap: 2px;
+      border: 1px solid black;
+      border-radius: 10px;
+  
+  
+  
+      /* justify-items: center;
+  
+  
+  
+      align-items:end; */
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+  
+  
+  #titulo-factura{
+  
+  
+  
+      grid-column: 1/6;
+  
+  
+  
+      text-align: center;
+  
+  
+  
+  }
+  
+  
+  
+  #btnGuardarCabeceraFactura-div{
+      text-align: right;
+      display: block;
+      width: 235px;
+  }
+  
+  #btnEditarCabeceraFactura{
+    float: left;
+  }
+  
+  #titulo-factura-fila2{
+  
+  
+  
+      grid-row:2/3;
+  
+  
+  
+  }
+  
+  
+  
+  .g-repuestos{
+      background-color: #F2F5A9;
+      padding: 10px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .contenedor .g-repuestos  .g-repuestos-titulo{
+  
+  
+  
+      grid-column: 1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: 9fr 1fr;
+  
+  
+  
+      grid-template-rows: 1fr;
+  
+  
+  
+      align-items:start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #zona_ingreso_repuesto{
+  
+  
+  
+      grid-column: 1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: repeat(6,1fr);
+  
+  
+  
+      grid-template-rows: 30px 30px 90px 50px;
+  
+  
+  
+      align-items: start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #zona_ingreso_repuesto .g-repuestos-busqueda{
+  
+  
+  
+      grid-column:1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+  
+  
+  
+      grid-template-rows: 1fr;
+  
+  
+  
+  
+  
+  
+  
+     /* grid-template-rows: 1fr;*/
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #ing-cod-rep{
+  
+  
+  
+      display:grid;
+  
+  
+  
+      justify-content: end;
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #txtBuscar{
+  
+  
+  
+      width: 95%;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #zona_ingreso_repuesto .g-repuestos-familia{
+  
+  
+  
+      grid-column: 1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: repeat(5,1fr);
+  
+  
+  
+      grid-gap:5px;
+  
+  
+  
+      align-items:start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #zona_ingreso_repuesto .g-repuestos-descripcion{
+  
+  
+  
+      grid-column: 1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: repeat(5,1fr);
+  
+  
+  
+      grid-gap:5px;
+  
+  
+  
+      align-items:start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  #zona_ingreso_repuesto .g-repuestos-stock{
+  
+  
+  
+      grid-column: 1/7;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: repeat(5,1fr);
+  
+  
+  
+      grid-gap:5px;
+  
+  
+  
+      align-items:start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .g-items{
+  
+  
+  
+      grid-column: 1/6;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: 1fr 1fr 1fr 1fr 2fr 3fr ;
+  
+  
+  
+      grid-template-rows: 30px 60px;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #titulo-item-factura{
+  
+  
+  
+      grid-column:4/6;
+  
+  
+  
+      display:grid;
+  
+  
+  
+      grid-template-columns: 80% 20%;
+  
+  
+  
+      justify-items:center;
+  
+  
+  
+      align-items:start;
+  
+  
+  
+      align-content:start;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  #btnGuardarItem-div{
+  
+  
+  
+      text-align: left;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  .g-fotos{
+      background-color: #D0FFFF;
+      display:grid;
+      grid-template-columns: 75% 25%;
+      grid-template-rows: 30px 60px 30px 400px;
+      margin-top: 60px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+  
+  
+  
+  .fotos_msje{
+      grid-column:1/3;
+  }
+  
+  
+  
+  #fotos_subir{
+      grid-column: 1/3;
+  }
+  
+  
+  
+  #fotos_submit{
+      grid-column: 1/3;
+  }
+  
+  
+  
+  #fotos_rep{
+  
+  
+  
+      grid-column:1/3;
+  
+  
+  
+      grid-row: 4/5;
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  .g-aplicaciones{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 40px 215px 40px 50px 300px;
+      margin-top: 60px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  .aplicaciones_msje{
+  
+  
+  
+      grid-column:1/3;
+  
+  
+  
+  }
+  
+  
+  
+  .aplicaciones_modelos{
+  
+  
+  
+      grid-column:2/4;
+  
+  
+  
+      grid-row:2/3;
+  
+  
+  
+  }
+  
+  
+  
+  .aplicaciones_nombre_modelo{
+    margin-top: 15px;
+      grid-column:1/4;
+      grid-row:3/4;
+  }
+  
+  
+  
+  .aplicaciones_anios_vehiculo{
+  
+  
+  
+      grid-column: 1/4;
+  
+  
+  
+      grid-row:4/5;
+  
+  
+  
+  }
+  
+  
+  
+  #similares_rep{
+  
+  
+  
+      grid-column:1/4;
+  
+  
+  
+      grid-row:5;
+  
+  
+  
+  }
+  
+  .g-oems{
+      background-color: #D0FFFF;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows:1fr 1fr 3fr;
+      align-items: start;
+      margin-top: 60px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+  
+  .oems_msje{
+      grid-column: 1/3;
+  }
+  
+  #oems_rep{
+      grid-column:1/3;
+      grid-row:3/4;
+  }
+  
+  .g-fabricantes{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows:1fr 1fr 1fr 3fr;
+      margin-top: 60px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+  }
+  
+  .fabricantes_msje{
+    grid-column: 1/3;
+  }
+  
+  .fabricantes_elegir{
+      grid-column: 1/2;
+      grid-row:2/3;
+  }
+  
+  .fabricantes_codigo{
+      grid-column: 2/3;
+      grid-row:2/3;
+  }
+  
+  .btnGuardarFAB{
+      grid-column: 1/3;
+      grid-row:3/4;
+  }
+  
+  #fabs_rep{
+      grid-column: 1/3;
+      grid-row:4/5;
+  }
+  
+  #global {
+    height: 60px;
+    width: 85%;
+    float: left;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    overflow-y: scroll;
+  }
+  
+  .dato{
+  
+    font-size: 11px;
+  
+  }

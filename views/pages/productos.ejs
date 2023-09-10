@@ -4,8 +4,9 @@
     <%- include('../partials/head'); %>
     <script src="js/facturar.js"></script>
 </head>
+
 <body>
-      <div class="container">
+      <div class="container-fluid">
           <header>
               <%- include('../partials/header'); %>
           </header>
@@ -39,71 +40,404 @@
                 <button class="btn btn-success btn-sm" onclick="paciencia()">Guardar</button>
               </div>
             </div>
-            <div class="row info mt-5 p-3" style="background-color: #F2F5A9;">
-                <div class="col-md-4">
-                  <label for="inputEmail4" class="form-label">Descripción</label>
-                  <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-md-4">
-                  <label for="inputPassword4" class="form-label">Familia</label>
-                  <select name="" id="" class="form-control">
-                    <option value="0">Sin familia</option>
-                    <% for(var i=0; i<familias.length; i++) { %>
-                        <option value="<%= familias[i].idFamilia %>"><%= familias[i].nombreFamilia %></option>
-                    <% } %>
-                  </select>
-                </div>
-                
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Medidas</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="">
-                </div>
-                <div class="col-md-3">
-                  <label for="inputCity" class="form-label">Stock</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="col-md-3">
-                  <label for="inputCity" class="form-label">Precio</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="col-md-4 d-flex align-items-end justify-content-end">
-                  <button role="button" class="btn btn-success btn-sm" onclick="paciencia()">Guardar Item</button>
-                </div>
-              </div>
-            <div class="row">
-                <div class="col-md-4 bg-light info">
-                    <div class="form-group">
-                        <label for="image">Imagen</label>
-                        <input type="file" name="" id="" class="form-control">
-                    </div>
-                    <div class="galeria">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW9_s4FbkhJwnM056U1vGwwSAeh1FEbciUPbYpKGyqvaQjur_SRfjLb8vQbknNzPTVhkM&usqp=CAU" alt="">
-                        <img src="https://nipazrepuestos.cl/wp-content/uploads/2022/05/amortiguadores-autos.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                          <h5>Marca</h5>
-                            <ul>
-                                <li>askdas</li>
-                                <li>akjsda</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                          <h5>Modelos</h5>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
+            <div class="g-repuestos">
 
+
+
+              <div class="g-repuestos-titulo d-flex justify-content-between">
+      
+      
+      
+                  <p class="text-center" id="ingreso_datos_titulo"><b>INGRESO DE DATOS GENERALES DEL REPUESTO</b></p>
+      
+      
+      
+                  <input type="submit" id="btnNuevoItem" name="btnNuevoItem" class="btn btn-success btn-sm" value="Nuevo Item" onclick="nuevo_item()" disabled />
+      
+      
+      
+              </div>
+      
+      
+      
+              <div id="zona_ingreso_repuesto">
+      
+      
+      
+                  <div class="g-repuestos-busqueda">
+      
+      
+      
+                          <span>
+      
+      
+      
+                              Búsqueda: &nbsp; &nbsp;
+      
+      
+      
+                              <input type="radio"  name="buscarpor" value="proveedor" checked>Proveedor&nbsp; &nbsp;
+      
+      
+      
+                              <input type="radio"  name="buscarpor" value="oem" style="visibility: hidden">
+      
+      
+      
+                          </span>
+      
+      
+      
+                          <div id="ing-cod-rep">
+      
+      
+      
+                              <input type="text" class="form-control form-control-sm" id="txtBuscar" placeholder="Ingrese Código de Repuesto" onkeyup="enter_press(event)">
+      
+      
+      
+                          </div>
+      
+      
+      
+                          <div>
+      
+      
+      
+                              <button id="btnBuscarRepuesto" onclick="buscarRepuesto()" name="btnBuscarRepuesto" class="btn btn-warning btn-sm">Buscar</button>
+      
+      
+      
+                          </div>
+      
+      
+      
+                          <div class="enlinea">
+      
+      
+      
+                              <button id="clonar" onclick="clonar()" class="btn btn-info btn-sm">CLONAR</button>&nbsp;<label for="codigo_interno">Cód. Interno:</label>
+      
+      
+      
+                              <input type="text" maxlength="10" value="0" id="codigo_interno" style="width:80px">
+      
+      
+      
+                          </div>
+      
+      
+      
+      
+      
+      
+      
+                  </div>
+      
+      
+      
+                  <div class="g-repuestos-familia">
+      
+      
+      
+                      <span class="enlinea">
+      
+      
+      
+                          <label for="familia">Familia:</label>
+      
+      
+      
+                          <select name="cboFamilia" class="form-control form-control-sm" id="familia" onchange="dameUtilidad(this.value)" style="width:70%">
+      
+      
+      
+                              <option value="">Sin Familias</option>
+      
+      
+      
+                          </select>
+      
+      
+      
+                          <button class="btn btn-success btn-sm" onclick="agregar_familia()">+</button>
+      
+      
+      
+                      </span>
+      
+      
+      
+                      <span class="enlinea">
+      
+      
+      
+                          <label for="MarcaRepuesto">Marca:</label>
+      
+      
+      
+                          <select name="cboMarcaRepuesto" class="form-control form-control-sm" id="MarcaRepuesto" onchange="pasar_a_FAB();">
+      
+      
+      
+                              <option value="">Elija Marca de Repuesto</option>
+      
+      
+      
+                          </select>
+      
+      
+      
+                          <button class="btn btn-success btn-sm" onclick="agregar_marca_repuesto()">+</button>
+      
+      
+      
+                      </span>
+      
+      
+      
+                      <span class="enlinea">
+      
+      
+      
+                          <label for="Pais">Origen:</label>
+      
+      
+      
+                          <select name="cboPais" class="form-control form-control-sm" id="Pais">
+      
+      
+      
+                              <option value="">Elija País de Origen</option>
+      
+      
+      
+                          </select>
+      
+      
+      
+                          <button class="btn btn-success btn-sm" onclick="agregar_pais()" style="display:inline-block">+</button>
+      
+      
+      
+                      </span>
+      
+      
+      
+                  </div>
+      
+      
+      
+                  <div class="g-repuestos-descripcion">
+      
+      
+      
+                      <span>
+      
+      
+      
+                          <label for="descripcion">Descripción:</label>
+      
+      
+      
+                          <input type="text" name="descripcion" value="{{old('descripcion')}}" id="descripcion" class="form-control form-control-sm" maxlength="200" placeholder="200 caratéres máximo">
+      
+      
+      
+                      </span>
+      
+      
+      
+                      <span>
+      
+      
+      
+                          <label for="observaciones">Observaciones:</label>
+      
+      
+      
+                          <textarea name="observaciones" value="" wrap="hard" cols="11" rows="2" id="observaciones" class="form-control form-control-sm" maxlength="400" placeholder="400 caratéres máximo"></textarea>
+      
+      
+      
+                      </span>
+      
+      
+      
+                      <span id="span_medidas">
+      
+      
+      
+                          <label for="medidas">Medidas:</label>
+      
+                          <div class="clearfix"></div>
+      
+                          <textarea name="medidas" value="" wrap="hard" cols="11" rows="3" id="medidas" class="form-control form-control-sm" maxlength="500" placeholder="500 caratéres máximo" style="width: 80%; float: left;"></textarea>
+                          
+                          <button class="btn btn-success btn-sm" onclick="agregar_medida_familia()">+</button>
+                          <input type="hidden" id="familia_length" />
+      
+                      </span>
+      
+      
+      
+                      <span>
+      
+      
+      
+                          <label for="cod_repuesto_proveedor">Cód. Repuesto: </label>
+      
+      
+      
+                          <textarea name="cod_repuesto_proveedor" maxlength="2000" wrap="hard" value="" id="cod_repuesto_proveedor" cols="11" rows="2" placeholder="Es el código interno del proveedor" class="form-control form-control-sm"></textarea>
+      
+      
+      
+                      </span>
+      
+      
+      
+                  </div>
+      
+      
+      
+                  <div class="g-repuestos-stock">
+                      <span>
+                          <label for="stock_minimo">Stock Mínimo:</label>
+                          <input type="text" name="stock_minimo" value="" id="stock_minimo" class="form-control form-control-sm">
+                      </span>
+                      <span>
+                          <label for="stock_maximo">Stock Máximo:</label>
+                          <input type="text" name="stock_maximo" value="10"  id="stock_maximo" class="form-control form-control-sm">
+                      </span>
+                      <span>
+                          <label for="codigo_barras">Código de Barras:</label>
+                          <input type="text" name="codigo_barras" value="0" id="codigo_barras" class="form-control form-control-sm">
+                      </span>
+                  </div>
+              </div>
+      
+          </div> 
+          <div class="d-flex">
+<!-- zona_fotos INICIO-->
+        <div class="g-fotos" id="zona_fotos">
+          <div class="fotos_msje">
+              <p id="fotos_msje"><b>FOTOS:</b></p>
+          </div>
+          <div id="fotos_subir">
+              <label>Subir Foto (jpg,jpeg,png):</label>
+              <input type="file" name="archivo" id="archivo" class="form-control-file">
+          </div>
+          <div id="fotos_submit">
+              <input type="submit" name="btnGuardarFoto" id="btnGuardarFoto" value="Agregar Foto" class="btn btn-primary btn-sm" onclick="guardarfoto()" style="margin-left:2px"/>
+          </div>
+          <div id="fotos_ficha_tecnica"></div>
+          <div  id="fotos_rep"></div>
+        </div><!-- zona_fotos FIN -->
+
+<!-- zona_similares APLICACIONES INICIO-->
+
+            <div class="g-aplicaciones" id="zona_similares" >
+                <div class="aplicaciones_msje">
+                    <p id="aplicaciones_msje"><b>APLICACIONES:</b></p>
+                </div>
+
+                <div style="text-align:right">
+                    <button id="ampliar" class="btn btn-sm btn-success" onclick="ampliar()">>></button>
+                </div>
+
+                <div style="padding-left:2px;padding-right:2px">
+
+                    <label for="MarcaSim">Marca:</label>
+                    <select name="cboMarcaSim" class="form-control form-control-sm" id="MarcaSim" onchange="cargarModelosSimilares()" size="10">
+                        <option value="">Elija una marca</option>
+                        
+                    </select>
+                </div>
+
+                <div class="aplicaciones_modelos" style="padding-left:2px;padding-right:2px">
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" class="form-control form-control-sm" id="filtrar_modelo" placeholder="filtrar modelo" style="width:40%">
+                    <select name="cboModeloSim" id="ModeloSim" class="form-control form-control-sm" onchange="ubicarse_en_anios()" size="10">
+                        <option value="">Sin modelos</option>
+                    </select>
+                </div>
+
+
+                <div  class="aplicaciones_nombre_modelo" >
+                    <p id="nombre_modelo" class="letra-chica"><b>Modelo:</b></p>
+                </div>
+
+                <div  class="aplicaciones_anios_vehiculo">
+                    <label for="anios_vehiculo">Años:</label><br>
+                    <span class="enlinea">
+                        <input type="text" name="anios_vehiculo_sim" value="" id="anios_vehiculo_sim" class="form-control form-control-sm" style="width:150px;margin-right:10px">
+                        <input type="submit" name="btnGuardarSimilar" id="btnGuardarSimilar" value="Agregar Aplicación" class="btn btn-primary btn-sm form-control-sm" onclick="guardarsimilar()"/>
+                    </span>
+                </div>
+
+                <div  id="similares_rep" >
+                    <!--zona para aplicaciones -->
                 </div>
             </div>
+
+   <!-- zona_similares APLICACIONES FIN-->
+
+  <!-- zona_OEMs INICIO-->
+            <div class="g-oems" id="zona_OEMs">
+                <div class="oems_msje">
+                    <p id="oems_msje"><b>OEMs:</b></p>
+                </div>
+                <div>
+                    <label for="codigos_OEM">Códigos:</label>
+                    <input type="text" name="codigos_OEM" id="codigos_OEM" class="form-control form-control-sm" onkeyup="enter_text_oem(event)">
+                </div>
+                <div>
+                    <input type="submit" name="btnGuardarOEM" id="btnGuardarOEM" value="Agregar OEM" class="btn btn-primary btn-sm form-control-sm" onclick="guardarOEM()" style="margin-left:10px;margin-top:20px"/>
+                </div>
+                <div  id="oems_rep" ></div>
+                <div id="rec_alt_rep"></div>
+                <div id="bendix"></div>
+                <div id="result"></div>
+
+            </div>
+
+<!-- zona_OEMs FIN-->
+
+      <!-- zona_FABs INICIO-->
+            <div class="g-fabricantes" id="zona_FABs">
+                <div class="fabricantes_msje">
+                    <p id="fabricantes_msje"><b>FABRICANTES:</b></p>
+                </div>
+                <div class="fabricantes_elegir">
+                    <label for="fabricante">Elegir:</label>
+                    <select name="cboFabricante" id="cboFabricante" class="form-control form-control-sm">
+                        <option value="">Sin Fabricantes</option>
+                    </select>
+                </div>
+                <div class="fabricantes_codigo" style="margin-left:10px">
+                    <label for="codigo_FAB">Código:</label>
+                    <input type="text" name="codigo_FAB" id="codigo_FAB" class="form-control form-control-sm" onkeyup="enter_text_FAB(event)" style="width:80%">
+                </div>
+
+                <div class="btnGuardarFAB">
+                    <input type="submit" name="btnGuardarFAB" id="btnGuardarFAB" value="Agregar FAB" class="btn btn-primary btn-sm form-control-sm" onclick="guardarFAB()" style="margin-top: 20px"/>
+                </div>
+
+
+
+                <div  id="fabs_rep" >
+
+
+
+                </div>
+
+
+
+            </div>
+      <!-- zona_FABs FIN-->
+           
+          </div>
           </main>
       
         

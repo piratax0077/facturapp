@@ -13,9 +13,10 @@ function buscarRepuesto(){
             button: "Aceptar"
         });
     }
-    fetch("https://panchoserver.ddns.net/api/dameproveedoresdemo")
+    fetch("https://panchoserver.ddns.net/api/"+busqueda+"/buscadordemo")
     .then(res => res.json())
     .then(data => {
+        console.log(data);
         let repuestos = data[0];
         console.log(repuestos);
         // mostrar la cantidad de repuestos en el array

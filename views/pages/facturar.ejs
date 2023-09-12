@@ -52,7 +52,7 @@
         </header>
         <main>
               <div class="botonera mt-2">
-                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">Agregar Producto</button>
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto" disabled>Agregar Producto</button>
                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalBuscarProducto">Buscar Producto</button>
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalBuscarCliente">Buscar Cliente</button>
                 <button class="btn btn-danger btn-sm" onclick="limpiarCarrito()">Limpiar carrito</button>
@@ -100,6 +100,22 @@
                     </table>
                     
                     
+                  </div>
+                  <div id="cotizacion_consignacion" class="info p-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioConCot" id="flexCotizacion">
+                      <label class="form-check-label" for="flexCotizacion">
+                        Cotización
+                      </label>
+                      <input type="text" name="" id="" class="form-control">
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioConCot" id="flexConsignacion" checked>
+                      <label class="form-check-label" for="flexConsignacion">
+                        Consignación
+                      </label>
+                      <input type="text" name="" id="" class="form-control">
+                    </div>
                   </div>
                   <div id="metodosPago" class="info">
                     <h3>Métodos de pago</h3>

@@ -10,7 +10,104 @@
             <%- include('../partials/header'); %>
         </header>
         <main>
-            <h1>Notas de crédito</h1>
+            
+            <div class="container-fluid">
+                <!-- fila 1 -->
+                <div class="row ml-1 w-100">
+                  <div class="col-sm-2 col-md-2 col-lg-2" style="border: 1px solid black; padding: 10px; border-radius: 10px;" >
+                      <strong>Tipo de Documento</strong><br>&nbsp;
+                      <label>
+                          <input type="radio" name="opt_documento" value="boleta" id="opt_boleta" checked="true">Boleta
+                      </label>
+                      <label>
+                          <input type="radio" name="opt_documento" value="factura" id="opt_factura">Factura
+                      </label>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6" style="background-color: #66ffff;height:60%; border: 1px solid black; padding: 10px; border-radius: 10px;">
+                          <div class="row" style="display:inline-block;width:100%;text-align: center;">
+                              <strong>MOTIVO</strong>
+                          </div>
+                          <div class="row">
+                              <div class="col-4">
+                                  <input type="radio" name="opt_motivo" value="1" id="opt_1" checked="true">
+                                  <label for="opt_1">Devolución Total <small><i>(ANULAR)</i></small></label>
+                              </div>
+                              <div class="col-4">
+                                  <input type="radio" name="opt_motivo" value="3" id="opt_3">
+                                  <label for="opt_3">Devolución Parcial</label>
+                              </div>
+                              <div class="col-4">
+                                  <input type="radio" name="opt_motivo" value="2" id="opt_2">
+                                  <label for="opt_2">Corregir Textos</label>
+                              </div>
+              
+                          </div>
+                  </div>
+                  <div class="col-sm-1 col-md-1 col-lg-1" style="border: 1px solid black;padding: 10px;border-radius: 10px;margin-left: 2px;">
+                      <input type="text" class="form-control" id="num_documento" placeholder="Ingrese Número" maxlength="15" size="13" style="margin-bottom:4px;" onKeyPress="return soloNumeros(event)">
+                      <input type="hidden" id="num_documento_h" value="0">
+                      <input type="hidden" id="total_nc" value="0">
+                  </div>
+                  <div class="col-sm-1 col-md-1 col-lg-1">
+                      <button class="btn btn-primary btn-block" onclick="cargar_documento()">Buscar</button>
+                  </div>
+                </div>  <!-- FIN fila 1 -->
+              
+                <!-- COLUMNA 2 -->
+                <div class="col-sm-9 col-md-9 col-lg-9" style="background-color: rgb(255, 255, 128);
+                margin-top: 10px;
+                border: 1px solid black;
+                border-radius: 10px;
+                padding: 10px;">
+                  <div id="mostrar_documento" class="d-none">
+                    <table class="table table-bordered table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="9%" style="text-align:center">Cod. Int.</th>
+                                <th scope="col" width="40%" style="text-align:center">Descripción</th>
+                                <th scope="col" width="8%" style="text-align:center">p.u.</th>
+                                <th scope="col" width="7%" style="text-align:center">Cant.</th>
+                                <th scope="col" width="8%" style="text-align:center">Devuelve</th>
+                                <th scope="col" width="10%" style="text-align:center">SubTotal</th>
+                                <th scope="col" width="8%" style="text-align:center">Dscto</th>
+                    
+                                <th scope="col" width="10%" style="text-align:center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BSI151</td>
+                                <td>BANDEJA INFERIOR DELANTERA IZQUIERDA S/ROTULA</td>
+                                <td>40.000</td>
+                                <td>1</td>
+                                <td><input type="number" class="form-control" value="1" disabled></td>
+                                <td>40.000 </td>
+                                <td>0</td>
+                                <td>40.000</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        <div class="row ml-1">
+                            <strong>PAGOS:</strong><br>
+                              Efectivo  -&gt;  40000.00<br>
+                                            
+                            </div>
+                            <div class="row ml-1">
+                                <div class="col-md-3">
+                                    MOTIVO:
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="motivo" size="40px" value="Anular Boleta N° XXXX">
+                                </div>
+                               <div class="col-md-3">
+                                <button class="btn btn-primary" onclick="generar_xml();">PROCESAR</button>
+                               </div>
+                                
+                            </div>
+                  </div>
+                  
+                </div> <!-- FIN COLUMNA 2 -->
+              </div> <!-- fin container-fluid principal -->
         </main>
         <footer>
             <%- include('../partials/footer'); %>

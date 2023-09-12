@@ -15,7 +15,7 @@
                     <h3>Listado de Usuarios</h3>
                     <ul>
                         <% usuarios.forEach((usuario,index) => { %>
-                            <li><a href="javascript:void(0)" class="text-decoration-none" onclick="seleccionarUsuario(<%=index %>, <%=JSON.stringify(usuarios) %>)"><img src="<%=usuario.urlimage %>" alt=""> <%=usuario.nombre %> </a></li>    
+                            <li><a href="javascript:void(0)" class="text-decoration-none" onclick="seleccionarUsuario(<%=index %>, <%=JSON.stringify(usuarios) %>)"><img src="<%=usuario.urlimage %>" alt=""> <%=usuario.nombre %> (<%=usuario.rol %>)</a></li>    
                         <% }); %>
                         
                         
@@ -28,7 +28,11 @@
                         <div class="card-body">
                           <h5 class="card-title" id="nombre">Francisco</h5>
                           <p class="card-text" id="email">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-warning btn-sm">Cambiar Rol</a>
+                          <p class="card-text" id="rol_usuario">---</p>
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-warning btn-sm" onclick="dameroles()" data-bs-toggle="modal" data-bs-target="#modalRoles">
+                            Cambiar Rol
+                          </button>
                         </div>
                       </div>
                 </div>
@@ -69,6 +73,24 @@
                         </label>
                       </div>
                 </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalRoles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Roles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <select name="" id="rol" class="form-control"></select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-sm">Guardar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
             </div>
         </main>
         

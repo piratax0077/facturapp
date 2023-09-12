@@ -304,6 +304,10 @@ app.get('/productos', (req, res) => {
   res.render('pages/productos');
 });
 
+app.get('/estado-dte', (req, res) => {
+  res.render('pages/estado-dte');
+});
+
 
 app.listen(3000, () => {
   console.log('Servidor en funcionamiento en el puerto 3000');

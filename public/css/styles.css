@@ -23,7 +23,7 @@ ul img{
 }
 
 header .container-fluid{
-    background-color: blanchedalmond;
+    background-color: #fff;
 }
 
 .carritoCompras, .info{
@@ -775,7 +775,11 @@ td img{
   }
   
   .dato{
-  
     font-size: 11px;
-  
+  }
+
+  /* ESTILOS PARA LA CABECERA */
+
+  .logoPrincipal{
+    width: 100px;
   }

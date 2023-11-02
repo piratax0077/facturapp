@@ -37,9 +37,7 @@ var clientes = [
 var usuarios = [
   {nombre: 'Francisco',rol:"Administrador", email: 'francisco@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png"},
   {nombre: 'Mauricio',rol:"Administrador", email:'mauricio@gmail.com', urlimage:"https://pbs.twimg.com/profile_images/1627693548064632834/uoIslBmc_400x400.jpg"},
-  {nombre: 'Maria José',rol:"Cajer@", email:'mariajose@gmail.com', urlimage:"https://i.pinimg.com/originals/8b/88/02/8b88025dbeb2fece9ba7bb08515c5449.png"},
-  {nombre: 'Carlos',rol:"vendedor", email:'carlos@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/809fe209adce43e1ad9973e58772828e.png"},
-  {nombre: 'Daniela',rol:"Cajer@", email:'daniela@gmail.com', urlimage:"https://smoda.elpais.com/wp-content/uploads/2021/10/sen10-620x470.jpg"}
+  {nombre: 'Oscar Aguilera',rol:"Administrador", email:'oscar@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/809fe209adce43e1ad9973e58772828e.png"}
 ];
 
 var formasPago = [

@@ -33,11 +33,12 @@ var clientes = [
   {nombre: 'Juan Perez', email:'juanperez@gmail.com', telefono: '1234567890'},
   {nombre: 'Maria Perez', email:'maria@gmail.com', telefono: '1234567890'},
 ];
+// ruta para la imagen del usuario oscar que esta en la carpeta public/imagenes
 
 var usuarios = [
-  {nombre: 'Francisco',rol:"Administrador", email: 'francisco@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/cc489f72056644ce9d093730555a8327.png"},
-  {nombre: 'Mauricio',rol:"Administrador", email:'mauricio@gmail.com', urlimage:"https://pbs.twimg.com/profile_images/1627693548064632834/uoIslBmc_400x400.jpg"},
-  {nombre: 'Oscar Aguilera',rol:"Administrador", email:'oscar@gmail.com', urlimage:"https://static1.personality-database.com/profile_images/809fe209adce43e1ad9973e58772828e.png"}
+  {nombre: 'Francisco',rol:"Administrador", email: 'francisco@gmail.com', urlimage:"https://cdn-icons-png.flaticon.com/512/5556/5556468.png"},
+  {nombre: 'Mauricio',rol:"Administrador", email:'mauricio@gmail.com', urlimage:"https://c0.klipartz.com/pngpicture/136/22/gratis-png-perfil-de-usuario-computadora-iconos-chica-cliente-avatar-thumbnail.png"},
+  {nombre: 'Oscar Aguilera',rol:"Administrador", email:'oscar@gmail.com', urlimage:"https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png"}
 ];
 
 var formasPago = [
@@ -304,6 +305,10 @@ app.get('/productos', (req, res) => {
 
 app.get('/estado-dte', (req, res) => {
   res.render('pages/estado-dte');
+});
+
+app.get('/tables', (req, res) => {
+  res.render('pages/tables');
 });
 
 

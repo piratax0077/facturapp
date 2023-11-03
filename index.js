@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
 
  carrito.forEach(producto => total += producto.cantidad * producto.precio);
   
-  res.render('pages/index2023', {
+  res.render('pages/index', {
     productos: productos,
     carrito: carrito, 
     cliente: nombreCliente, 

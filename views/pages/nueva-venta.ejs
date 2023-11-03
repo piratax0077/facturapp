@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Blank</title>
+
+    <!-- Custom fonts for this template-->
+    <%- include('../partials/head2023.ejs'); %>
+    
+    <script src="js/facturar.js"></script>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include('../partials/header2023.ejs'); %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <%- include('../partials/topbar2023.ejs'); %>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800"></h1>
+                    <main>
+                        <div class="botonera mt-2">
+                          <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto" disabled>Agregar Producto</button>
+                          <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalBuscarProducto">Buscar Producto</button>
+                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalBuscarCliente">Buscar Cliente</button>
+                          <button class="btn btn-danger btn-sm" onclick="limpiarCarrito()">Limpiar carrito</button>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-md-4">
+                            
+                            <div id="informacion" class="info">
+                              <h3>Información</h3>
+                              <div class="d-flex justify-content-around bg-light my-2">
+                                
+                                <label for="Documento">Documento</label>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                  <label class="form-check-label" for="flexRadioDefault1">
+                                    Boleta
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                                  <label class="form-check-label" for="flexRadioDefault2">
+                                    Factura
+                                  </label>
+                                </div>
+                              </div>
+                              
+                              <table class="table">
+                                
+                                <tbody>
+                                  <tr>
+                                    <td>Nombre</td>
+                                    <td><span id="nombreCliente"><%=cliente %></span></td>
+                                    <input type="hidden" name="cliente" id="cliente" value="<%=cliente %>">
+                                  </tr>
+                                  <tr>
+                                    <td>Fecha</td>
+                                    <td><span id="fecha"><%=fechaActual %></span></td>
+                                  </tr>
+                                  <tr>
+                                    <td>Total</td>
+                                    <td>$<span id="total"><%=total.toLocaleString() %></span></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              
+                            </div>
+                            <div id="cotizacion_consignacion" class="info p-3">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioConCot" id="flexCotizacion">
+                                <label class="form-check-label" for="flexCotizacion">
+                                  Cotización
+                                </label>
+                                <input type="text" name="" id="" class="form-control">
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioConCot" id="flexConsignacion" checked>
+                                <label class="form-check-label" for="flexConsignacion">
+                                  Consignación
+                                </label>
+                                <input type="text" name="" id="" class="form-control">
+                              </div>
+                            </div>
+                            <div id="metodosPago" class="info">
+                              <h3>Métodos de pago</h3>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkEfectivo" onchange="mostrarNumeroInput()" checked>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Efectivo
+                                    </label>
+                                  </div>
+                                  <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkTransferencia" onchange="mostrarNumeroInput()">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Transferencia
+                                    </label>
+                                  </div>
+                                  <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkCredito" onchange="mostrarNumeroInput()">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Crédito
+                                    </label>
+                                  </div>
+                                  <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkCheque" onchange="mostrarNumeroInput()">
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                      Cheque
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <input type="text" name="" id="inputEfectivo" class="form-control" value="<%=total %>">
+                                  <input type="text" name="" id="inputTransferencia" class="form-control" disabled>
+                                  <input type="text" name="" id="inputCredito" class="form-control" disabled>
+                                  <input type="text" name="" id="inputCheque" class="form-control" disabled>
+                                </div>
+                                <div class="text-center mt-5">
+                                  <button class="btn btn-warning" onclick="procesar()">PROCESAR</button>
+                                </div>
+                                
+                              </div>
+                              
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="carritoCompras">
+                              <h3>Carrito de Compras</h3>
+                              <% if(carrito.length == 0){ %>
+                                <span class="badge bg-warning text-center mb-3 mx-2">No hay productos. Ingrese rápido.</span>
+                              <% }else{ %>
+                                <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>Código interno</th>
+                                          <th>Producto</th>
+                                          <th>Precio</th>
+                                          <th>Cantidad</th>
+                                          <th>Subtotal</th>
+                                          <th>Acciones</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <% let totalSum = 0; %>
+                                      <% carrito.forEach(function(c, index) { %>
+                                        <tr>
+                                          <td><a href="javascript:void(0)" onclick="verProducto('<%=c.codigo_interno %>')" data-bs-target="#modalVerProducto" data-bs-toggle="modal"><%=c.codigo_interno %></a> </td>
+                                          <td><%= c.nombre %></td>
+                                          <td>$<%= (c.precio).toLocaleString() %></td>
+                                          <td><%= c.cantidad %></td>
+                                          <td>$<%= (c.precio * c.cantidad).toLocaleString() %></td>
+                                          <td>
+                                            <button class="btn btn-danger btn-sm" onclick="eliminarProductoCarro('<%=index %>')" data-index="<%= index %>">Eliminar</button>
+                                          </td>
+                                        </tr>
+                                        <% totalSum += c.precio * c.cantidad; %>
+                                    <% }); %>
+                                  </tbody>
+                                  <tfoot>
+                                      <tr>
+                                          <td colspan="3" class="text-end">Total</td>
+                                          <td>$<%= totalSum.toLocaleString() %></td>
+                                          <td></td>
+                                      </tr>
+                                  </tfoot>
+                              </table>
+          
+                              <% } %>
+                              <% if(carrito.length == 0) { %>
+                              <p class="letraPequeña">Su carrito esta vacío, ya pue compre.</p>
+                              <% }else if(carrito.length == 1) { %>
+                                <p class="letraPequeña">Tiene <%=carrito.length %> producto en el carrito.</p>
+                              <% } else { %>
+                                <p class="letraPequeña">Tiene <%=carrito.length %> productos en el carrito.</p>
+                              <% } %>
+          
+                              
+                          </div>
+                          <div id="descuentos" class="info bg-light p-3">
+                            
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="">Descuento por cliente</label>
+                                  <input type="number" name="" id="" class="form-control" placeholder="Porcentaje">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="">Descuento por familia</label>
+                                  <input type="number" name="" id="" class="form-control" placeholder="Porcentaje">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                  <label for="">Descuento por que sí</label>
+                                  <input type="number" name="" id="" class="form-control" placeholder="Porcentaje">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col-md-4">
+                                <button class="btn btn-primary btn-sm w-100" onclick="aplicarDescuento('c')">Aplicar</button>
+                              </div>
+                              <div class="col-md-4">
+                                <button class="btn btn-primary btn-sm w-100" onclick="aplicarDescuento('f')">Aplicar</button>
+                              </div>
+                              <div class="col-md-4">
+                                <button class="btn btn-primary btn-sm w-100" onclick="aplicarDescuento('s')">Aplicar</button>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      
+                  </main>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <%- include('../partials/modalLogout.ejs'); %>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

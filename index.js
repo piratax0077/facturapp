@@ -83,7 +83,7 @@ app.get('/', (req, res) => {
 
  carrito.forEach(producto => total += producto.cantidad * producto.precio);
   
-  res.render('pages/index', {
+  res.render('pages/index2023', {
     productos: productos,
     carrito: carrito, 
     cliente: nombreCliente, 
@@ -309,6 +309,33 @@ app.get('/estado-dte', (req, res) => {
 
 app.get('/tables', (req, res) => {
   res.render('pages/tables');
+});
+
+app.get('/login2023', (req, res) => {
+  res.render('pages/login2023');
+});
+
+app.get('/register2023', (req, res) => {
+  res.render('pages/register2023');
+});
+
+app.get('/blank2023', (req, res) => {
+  res.render('pages/blank2023');
+});
+
+app.get('/charts2023', (req, res) => {
+  res.render('pages/charts2023');
+});
+
+app.get('/nueva-venta', (req, res) => {
+    let total = 0;
+    carrito.forEach(producto => total += producto.cantidad * producto.precio);
+    res.render('pages/nueva-venta',{
+      productos: productos,
+      carrito: carrito, 
+      cliente: nombreCliente, 
+      fechaActual: fechaActual, 
+      total: total});
 });
 
 

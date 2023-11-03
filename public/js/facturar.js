@@ -549,3 +549,42 @@ function ampliar()
 
         ampliar_aplicacionez=!ampliar_aplicacionez;
 }
+
+function mostrarNumeroInput() {
+    let inputEfectivo = document.getElementById('inputEfectivo');
+    let inputTransferencia = document.getElementById('inputTransferencia');
+    let inputCredito = document.getElementById('inputCredito');
+    let inputCheque = document.getElementById('inputCheque');
+    let checkEfectivo = document.getElementById('checkEfectivo');
+    let checkTransferencia = document.getElementById('checkTransferencia');
+    let checkCredito = document.getElementById('checkCredito');
+    let checkCheque = document.getElementById('checkCheque');
+    if(checkEfectivo.checked) {
+      // quitar el atributo disabled al input con id inputEfectivo
+      inputEfectivo.removeAttribute('disabled');
+    }else{
+      inputEfectivo.setAttribute('disabled', true);
+    }
+
+    if(checkTransferencia.checked) {
+      // quitar el atributo disabled al input con id inputTransferencia
+      inputTransferencia.removeAttribute('disabled');
+    }else{
+      // agregar el atributo disabled al input con id inputTransferencia
+      inputTransferencia.setAttribute('disabled', true);
+    }
+
+    if(checkCredito.checked) {
+      inputCredito.removeAttribute('disabled');
+    }else{
+      inputCredito.setAttribute('disabled', true);
+    }
+
+
+    if(checkCheque.checked) {
+      inputCheque.removeAttribute('disabled');
+    }else{
+      inputCheque.setAttribute('disabled', true);
+    }
+
+  }
